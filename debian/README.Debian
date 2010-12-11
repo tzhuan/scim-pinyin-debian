@@ -1,0 +1,26 @@
+This package scim-pinyin is a SCIM module for Pinyin input method.  Please
+see /usr/share/doc/scim/README.Debian.gz for usage of scim.
+
+SCIM uses TrueType fonts for display.  Since scim-pinyin supports both
+simplified and traditional Chinese, you need to install fonts for these
+languages.  The Arphic fonts recommended by scim-pinyin package should work
+fine.
+
+----
+Tips
+----
+
+In order to use ``Pinyin with tone'', you need to set ``use tone'' in scim-setup
+(right click scim notification icon, click the wrench icon on scim panel, or
+launch from system menu).  Then you can use Shift-n (n = 1, 2, 3, 4, 5) to
+indicate the tone of the pinyin.
+
+----
+Bugs
+----
+
+Since the skim-scim-pinyin package was not created for squeeze, you can not
+configure scim-pinyin from skim under KDE.  See http://bugs.debian.org/388749 .
+
+-- Ming Hua <minghua@rice.edu>  Sat, 16 Apr 2005 14:21:11 -0500
+-- Osamu Aoki <osamu@debian.org>  Sat, 11 Dec 2010 18:06:36 +0900
