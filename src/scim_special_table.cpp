@@ -20,7 +20,9 @@
 #define Uses_STL_IOMANIP
 #define Uscs_C_STRING
 
-#include <time.h>
+#include <cstring>
+#include <ctime>
+
 #include <scim.h>
 #include "scim_pinyin_private.h"
 #include "scim_special_table.h"
@@ -120,7 +122,7 @@ class SpecialKeyItemLessThanByKey
 public:
 	bool operator () (const std::pair <String, String> & lhs,
 					  const std::pair <String, String> & rhs) const {
-		int eq = strncmp (lhs.first.c_str (), rhs.first.c_str (), std::min (lhs.first.length(), rhs.first.length()));
+		int eq = std::strncmp (lhs.first.c_str (), rhs.first.c_str (), std::min (lhs.first.length(), rhs.first.length()));
 
 		if (eq < 0) return true;
 		if (eq > 0) return false;
@@ -141,7 +143,7 @@ public:
 	bool operator () (const std::pair <String, String> & lhs,
 					  const std::pair <String, String> & rhs) const {
 
-		int eq = strncmp (lhs.first.c_str (), rhs.first.c_str (), std::min (lhs.first.length(), rhs.first.length()));
+		int eq = std::strncmp (lhs.first.c_str (), rhs.first.c_str (), std::min (lhs.first.length(), rhs.first.length()));
 
 		if (eq < 0) return true;
 		if (eq > 0) return false;
@@ -308,7 +310,7 @@ static const char * __chinese_week_2 [] =
 static void
 get_broken_down_time (struct tm &buf)
 {
-	time_t simple_time = time (NULL);
+	time_t simple_time = std::time (NULL);
 
 #ifdef HAVE_LOCALTIME_R
 	localtime_r (&simple_time, &buf);

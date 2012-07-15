@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2005 James Su <suzhe@tsinghua.org.cn>
  *
- * $Id: scim_pinyin_imengine.h,v 1.3 2005/08/06 15:19:01 suzhe Exp $
+ * $Id: scim_pinyin_imengine.h,v 1.4 2005/08/15 08:56:00 suzhe Exp $
  */
 
 #if !defined (__SCIM_PINYIN_SERVER_H)
@@ -119,6 +119,8 @@ class PinyinInstance : public IMEngineInstanceBase
 
     int                  m_keys_caret;
     int                  m_lookup_caret;
+
+    String               m_client_encoding;
 
     String               m_inputed_string;
  

@@ -33,7 +33,7 @@ SKIM_SUBDIR=skim
 endif
 
 AUTOMAKE_OPTIONS 	= gnu
-SUBDIRS 		= m4  src data intl po $(SKIM_SUBDIR)
+SUBDIRS 		= src data po # $(SKIM_SUBDIR)
 
 ## @start 1
 MAINTAINERCLEANFILES 	= Makefile.in aclocal.m4 configure config.h.in $(AUX_DIST)

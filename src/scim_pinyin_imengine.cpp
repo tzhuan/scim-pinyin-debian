@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2005 James Su <suzhe@tsinghua.org.cn>
  *
- * $Id: scim_pinyin_imengine.cpp,v 1.6 2005/08/06 15:19:01 suzhe Exp $
+ * $Id: scim_pinyin_imengine.cpp,v 1.8 2006/06/12 01:31:14 suzhe Exp $
  *
  */
 
@@ -117,10 +117,10 @@ extern "C" {
 
     uint32 scim_imengine_module_init (const ConfigPointer &config)
     {
-        _status_property.set_tip (_("The status of the current input method. Click to change it."));
-        _letter_property.set_tip (_("The input mode of the letters. Click to toggle between half and full."));
+        _status_property.set_tip (_("Current input method state. Click to change it."));
+        _letter_property.set_tip (_("Input mode of the letters. Click to toggle between half and full."));
         _letter_property.set_label (_("Full/Half Letter"));
-        _punct_property.set_tip (_("The input mode of the puncutations. Click to toggle between half and full."));
+        _punct_property.set_tip (_("Input mode of the puncutations. Click to toggle between half and full."));
         _punct_property.set_label (_("Full/Half Punct"));
 
         _status_property.set_label ("英");
@@ -210,7 +210,7 @@ PinyinFactory::init ()
           false,  false,  false,  false,
           false,  false,  false };
 
-    char *amb_names [SCIM_PINYIN_AmbLast + 2] =
+    const char *amb_names [SCIM_PINYIN_AmbLast + 2] =
         { "Any",  "ZhiZi","ChiCi","ShiSi",
           "NeLe", "LeRi", "FoHe", "AnAng",
           "EnEng","InIng", 0};
@@ -432,7 +432,7 @@ PinyinFactory::init ()
     if (m_save_period > 0 && m_save_period < 30)
         m_save_period = 30;
 
-    m_name = utf8_mbstowcs ("智能拼音");
+    m_name = utf8_mbstowcs (_("Smart Pinyin"));
 
     m_pinyin_global.toggle_tone (tone);
     m_pinyin_global.toggle_incomplete (incomplete);
@@ -603,7 +603,7 @@ PinyinFactory::get_help () const
                       "      string of the current date.\n"
                       "      Input \"imath\" will give you the\n"
                       "      common mathematic symbols.\n"
-                      "    For more informat about this mode,\n"
+                      "    For more information about this mode,\n"
                       "    please refer to\n"
                       "    /usr/share/scim/pinyin/special_table"));
 
@@ -693,6 +693,7 @@ PinyinInstance::PinyinInstance (PinyinFactory *factory,
       m_lookup_table_def_page_size (9),
       m_keys_caret (0),
       m_lookup_caret (0),
+      m_client_encoding (encoding),
       m_iconv (encoding)
 {
     m_full_width_punctuation [0] = true;
@@ -928,16 +929,19 @@ PinyinInstance::reset ()
 {
     String encoding = get_encoding ();
 
-    m_iconv.set_encoding (encoding);
+    if (m_client_encoding != encoding) {
+        m_client_encoding = encoding;
+        m_iconv.set_encoding (encoding);
 
-    if (encoding == "GBK" || encoding == "GB2312") {
-        m_simplified = true;
-        m_traditional = false;
-        m_chinese_iconv.set_encoding ("GB2312");
-    } else if (encoding == "BIG5" || encoding == "BIG5-HKSCS") {
-        m_simplified = false;
-        m_traditional = true;
-        m_chinese_iconv.set_encoding ("BIG5");
+        if (encoding == "GBK" || encoding == "GB2312") {
+            m_simplified = true;
+            m_traditional = false;
+            m_chinese_iconv.set_encoding ("GB2312");
+        } else if (encoding == "BIG5" || encoding == "BIG5-HKSCS") {
+            m_simplified = false;
+            m_traditional = true;
+            m_chinese_iconv.set_encoding ("BIG5");
+        }
     }
 
     m_double_quotation_state = false;
@@ -1027,7 +1031,6 @@ PinyinInstance::trigger_property (const String &property)
         else
             m_chinese_iconv.set_encoding ("");
  
-        refresh_all_properties ();
         reset ();
     } else if (property == SCIM_PROP_LETTER) {
         int which = ((m_forward || is_english_mode ()) ? 1 : 0);

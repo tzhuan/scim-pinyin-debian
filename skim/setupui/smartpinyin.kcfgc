@@ -1,4 +1,0 @@
-File=smartpinyin.kcfg
-ClassName=SmartPinyinConfig
-Singleton=true
-Mutators=false
