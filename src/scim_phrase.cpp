@@ -27,6 +27,8 @@
 
 #define SCIM_PHRASE_MAX_RELATION 1000
 
+#include <cstring>
+
 #include <scim.h>
 #include "scim_pinyin_private.h"
 #include "scim_phrase.h"
@@ -197,13 +199,13 @@ PhraseLib::input (std::istream &is)
 
 	// Check lib file
 	is.getline (temp, 40);
-	if (strncmp (temp,
+	if (std::strncmp (temp,
 		scim_phrase_lib_text_header,
-		strlen (scim_phrase_lib_text_header)) == 0) {
+		std::strlen (scim_phrase_lib_text_header)) == 0) {
 		binary = false;
-	} else if (strncmp (temp,
+	} else if (std::strncmp (temp,
 		scim_phrase_lib_binary_header,
-		strlen (scim_phrase_lib_binary_header)) == 0) {
+		std::strlen (scim_phrase_lib_binary_header)) == 0) {
 		binary = true;
 	} else {
 		return false;
@@ -211,7 +213,7 @@ PhraseLib::input (std::istream &is)
 
 	is.getline (temp, 40);
 
-	if (strncmp (temp, scim_phrase_lib_version, strlen (scim_phrase_lib_version)) != 0)
+	if (std::strncmp (temp, scim_phrase_lib_version, std::strlen (scim_phrase_lib_version)) != 0)
 		return false;
 
 	// Read phrase library

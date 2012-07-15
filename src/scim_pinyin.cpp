@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2005 James Su <suzhe@tsinghua.org.cn>
  *
- * $Id: scim_pinyin.cpp,v 1.3 2005/08/08 06:11:16 suzhe Exp $
+ * $Id: scim_pinyin.cpp,v 1.4 2006/01/13 06:31:46 suzhe Exp $
  *
  */
 
@@ -28,6 +28,7 @@
 #define Uses_SCIM_CONFIG_PATH
 #define Uses_SCIM_LOOKUP_TABLE
 
+#include <cstring>
 #include <scim.h>
 #include "scim_pinyin.h"
 
@@ -131,22 +132,22 @@ static const PinyinToken scim_pinyin_finals[] =
     {"ian", {0x3127,0x3122,0}, 3, 2},
     {"iang",{0x3127,0x3124,0}, 4, 2},
     {"iao", {0x3127,0x3120,0}, 3, 2},
-    {"ie",  {0x3127,0x311c,0}, 2, 2},
+    {"ie",  {0x3127,0x311d,0}, 2, 2},
     {"in",  {0x3127,0x3123,0}, 2, 2},
     {"ing", {0x3127,0x3125,0}, 3, 2},
     {"iong",{0x3129,0x3125,0}, 4, 2},
     {"iou", {0x3127,0x3121,0}, 3, 2},
     {"iu",  {0x3127,0x3121,0}, 2, 2},
-    {"ng",  {0x312b,0},        2, 1},
+    {"ng",  {0x3123,0},        2, 1},
     {"o",   {0x311b,0},        1, 1},
-    {"ong", {0x3128,0x3123,0}, 3, 2},
+    {"ong", {0x3128,0x3125,0}, 3, 2},
     {"ou",  {0x3121,0},        2, 1},
     {"u",   {0x3128,0},        1, 1},
     {"ua",  {0x3128,0x311a,0}, 2, 2},
     {"uai", {0x3128,0x311e,0}, 3, 2},
     {"uan", {0x3128,0x3122,0}, 3, 2},
     {"uang",{0x3128,0x3124,0}, 4, 2},
-    {"ue",  {0x3129,0x311c,0}, 2, 2},
+    {"ue",  {0x3129,0x311d,0}, 2, 2},
     {"uei", {0x3128,0x311f,0}, 3, 2},
     {"uen", {0x3128,0x3123,0}, 3, 2},
     {"ueng",{0x3128,0x3125,0}, 4, 2},
@@ -166,7 +167,7 @@ static const PinyinToken scim_pinyin_tones [] =
     {"2", {0x302B,0}, 1, 1},
     {"3", {0x302C,0}, 1, 1},
     {"4", {0x302D,0}, 1, 1},
-    {"5", {0}, 0, 0}
+    {"5", {0x02D9,0}, 1, 1}
 };
 
 static const PinyinTokenIndex scim_pinyin_initials_index[] =
@@ -684,7 +685,7 @@ PinyinValidator::PinyinValidator (const PinyinTable *table)
 void
 PinyinValidator::initialize (const PinyinTable *table)
 {
-    memset (m_bitmap, 0, sizeof (m_bitmap));
+    std::memset (m_bitmap, 0, sizeof (m_bitmap));
 
     if (!table || !table->size()) return;
 

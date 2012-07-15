@@ -1,6 +1,7 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT(scim-pinyin, 0.5.91, suzhe@tsinghua.org.cn) #do not forget to edit skim/configure.in.in to change the version
+AC_INIT(scim-pinyin, 0.5.92, suzhe@tsinghua.org.cn) #do not forget to edit skim/configure.in.in to change the version
 AC_CONFIG_SRCDIR([src/scim_pinyin_imengine.h])
+AC_CONFIG_MACRO_DIR([m4])
 
 SCIM_VERSION=1.2.0
 AC_SUBST(SCIM_VERSION)
@@ -14,14 +15,16 @@ AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER([config.h])
 
 # Init gettext
-ALL_LINGUAS="zh_CN zh_TW ko ja de fr it"
-AM_GNU_GETTEXT
+ALL_LINGUAS="zh_CN zh_TW ko ja de fr it nl"
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION(0.14.1)
+
+# Check intltool
+# IT_PROG_INTLTOOL([0.34.0])
 
 # Init libtool
-AC_LIBTOOL_WIN32_DLL
 AC_LIBTOOL_DLOPEN
 AC_PROG_LIBTOOL
-AC_LIB_LTDL
 AC_SUBST(LIBTOOL_DEPS)
 
 # Checks for programs.
@@ -119,10 +122,8 @@ SCIM_PINYIN_DATADIR=$SCIM_DATADIR/pinyin
 AC_SUBST(SCIM_PINYIN_DATADIR)
 
 AC_CONFIG_FILES([Makefile
-                 m4/Makefile
                  src/Makefile
-		 data/Makefile
-                 intl/Makefile
+				 data/Makefile
                  po/Makefile.in
                  scim-pinyin.spec])
 

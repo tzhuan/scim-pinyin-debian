@@ -255,7 +255,7 @@ int main (int argc, char * argv [])
 	for (int i = 0; i<=SCIM_PINYIN_AmbLast; i++)
 		custom.use_ambiguities [i] = false;
 
-	validator = new PinyinValidator (custom);
+	validator = new PinyinValidator ();
 	pinyin_table = new PinyinTable (custom, validator);
 
 	std::cout << "Memory info before loading pinyin table:\n";
@@ -266,7 +266,7 @@ int main (int argc, char * argv [])
 		return -1;
 	}
 
-	validator->initialize (custom, pinyin_table);
+	validator->initialize (pinyin_table);
 
 	pinyin_phrase_lib = new PinyinPhraseLib (custom, validator, pinyin_table);
 

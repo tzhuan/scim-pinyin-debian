@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2005 James Su <suzhe@tsinghua.org.cn>
  *
- * $Id: scim_pinyin_phrase.h,v 1.1.1.1 2005/01/06 13:31:00 suzhe Exp $
+ * $Id: scim_pinyin_phrase.h,v 1.2 2006/01/13 06:31:46 suzhe Exp $
  *
  */
 
@@ -98,6 +98,9 @@ public:
 	PinyinPhraseLessThan (const PinyinCustomSettings &custom)
 		: m_less (custom) {}
 
+	PinyinPhraseLessThan (const PinyinKeyLessThan &le)
+		: m_less (le) {}
+
 	bool operator () (const PinyinPhrase &lhs, const PinyinPhrase &rhs) const;
 };
 
@@ -108,6 +111,9 @@ class PinyinPhraseEqualTo
 public:
 	PinyinPhraseEqualTo (const PinyinCustomSettings &custom)
 		: m_equal (custom) {}
+
+	PinyinPhraseEqualTo (const PinyinKeyEqualTo &eq)
+		: m_equal (eq) {}
 
 	bool operator () (const PinyinPhrase &lhs, const PinyinPhrase &rhs) const;
 };
@@ -122,6 +128,10 @@ public:
 	PinyinPhraseLessThanByOffset (PinyinPhraseLib *lib,
 								  const PinyinCustomSettings &custom)
 		: m_lib (lib), m_less (custom) { }
+
+	PinyinPhraseLessThanByOffset (PinyinPhraseLib *lib,
+								  const PinyinKeyLessThan &le)
+		: m_lib (lib), m_less (le) { }
 
 	bool operator () (const std::pair <uint32, uint32> & lhs,
 					  const std::pair <uint32, uint32> & rhs) const;
@@ -138,6 +148,10 @@ public:
 								 const PinyinCustomSettings &custom)
 		: m_lib (lib), m_equal (custom) { }
 
+	PinyinPhraseEqualToByOffset (PinyinPhraseLib *lib,
+								 const PinyinKeyEqualTo &eq)
+		: m_lib (lib), m_equal (eq) { }
+
 	bool operator () (const std::pair <uint32, uint32> & lhs,
 					  const std::pair <uint32, uint32> & rhs) const;
 };
@@ -152,6 +166,23 @@ public:
 	PinyinPhrasePinyinLessThanByOffset (PinyinPhraseLib *lib,
 										const PinyinKeyLessThan &le)
 		: m_lib (lib), m_less (le) { }
+
+	PinyinPhrasePinyinLessThanByOffset (PinyinPhraseLib *lib,
+										const PinyinCustomSettings &custom)
+		: m_lib (lib), m_less (custom) { }
+
+	bool operator () (const std::pair <uint32, uint32> & lhs,
+					  const std::pair <uint32, uint32> & rhs) const;
+};
+
+class PinyinPhrasePhraseLessThanByOffset
+	: public std::binary_function < std::pair <uint32, uint32>,
+									std::pair <uint32, uint32>, bool >
+{
+	PinyinPhraseLib *m_lib;
+public:
+	PinyinPhrasePhraseLessThanByOffset (PinyinPhraseLib *lib)
+		: m_lib (lib) { }
 
 	bool operator () (const std::pair <uint32, uint32> & lhs,
 					  const std::pair <uint32, uint32> & rhs) const;
@@ -254,6 +285,7 @@ class PinyinPhraseLib
 	friend class PinyinPhraseEqualToByOffsetSP;
 
 	friend class PinyinPhrasePinyinLessThanByOffset;
+	friend class PinyinPhrasePhraseLessThanByOffset;
 public:
 	PinyinPhraseLib (const PinyinCustomSettings &custom,
 					 const PinyinValidator *validator,
@@ -348,7 +380,7 @@ public:
 	Phrase append (const Phrase &phrase, const PinyinKeyVector &keys);
 	Phrase append (const WideString &phrase, const PinyinKeyVector &keys);
 
-	void dump_content (std::ostream &os, int minlen = 2, int maxlen = SCIM_PHRASE_MAX_LENGTH);
+	void dump_content (std::ostream &os, int minlen = 1, int maxlen = SCIM_PHRASE_MAX_LENGTH);
 
 	void set_burst_stack_size (uint32 size) {
 		m_phrase_lib.set_burst_stack_size (size);
@@ -577,6 +609,13 @@ PinyinPhrasePinyinLessThanByOffset::operator () (const std::pair <uint32, uint32
 			return false;
 	}
 
+	return m_lib->get_phrase (lhs.first) < m_lib->get_phrase (rhs.first);
+}
+
+inline bool
+PinyinPhrasePhraseLessThanByOffset::operator () (const std::pair <uint32, uint32> & lhs,
+												 const std::pair <uint32, uint32> & rhs) const
+{
 	return m_lib->get_phrase (lhs.first) < m_lib->get_phrase (rhs.first);
 }
 

@@ -1,6 +1,6 @@
 %define nam             scim-pinyin
-%define ver             0.5.91
-%define skim            1
+%define ver             0.5.92
+%define skim            
 %define rel             1
 
 Summary:        Smart Pinyin IMEngine for Smart Common Input Method platform
@@ -76,11 +76,11 @@ make
 
 make DESTDIR=${RPM_BUILD_ROOT} install
 
-rm -f $RPM_BUILD_ROOT//usr/lib/scim-1.0/IMEngine/*.{a,la}
-rm -f $RPM_BUILD_ROOT//usr/lib/scim-1.0/SetupUI/*.{a,la}
+rm -f $RPM_BUILD_ROOT//usr/lib/x86_64-linux-gnu/scim-1.0/1.4.0/IMEngine/*.{a,la}
+rm -f $RPM_BUILD_ROOT//usr/lib/x86_64-linux-gnu/scim-1.0/1.4.0/SetupUI/*.{a,la}
 
 %if %{skim}
-rm -f $RPM_BUILD_ROOT//opt/kde3/lib/kde*/*.{a,la}
+rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %endif
 
 %clean
@@ -89,8 +89,8 @@ rm -f $RPM_BUILD_ROOT//opt/kde3/lib/kde*/*.{a,la}
 %files
 %defattr(-, root, root)
 %doc AUTHORS COPYING NEWS README ChangeLog
-/usr/lib/scim-1.0/IMEngine/pinyin.so
-/usr/lib/scim-1.0/SetupUI/pinyin-imengine-setup.so
+/usr/lib/x86_64-linux-gnu/scim-1.0/1.4.0/IMEngine/pinyin.so
+/usr/lib/x86_64-linux-gnu/scim-1.0/1.4.0/SetupUI/pinyin-imengine-setup.so
 /usr/share/scim/pinyin/*
 /usr/share/scim/icons/smart-pinyin.png
 %{_datadir}/locale/*/LC_MESSAGES/scim-pinyin.mo
@@ -98,10 +98,10 @@ rm -f $RPM_BUILD_ROOT//opt/kde3/lib/kde*/*.{a,la}
 %if %{skim}
 %files skim
 %defattr(-, root, root)
-/opt/kde3/lib/kde*/*.so
-/opt/kde3/share/apps/skim/pics/smart-pinyin.png
-/opt/kde3/share/config.kcfg/smartpinyin.kcfg
-/opt/kde3/share/locale/*/LC_MESSAGES/skim-scim-pinyin.mo
-/opt/kde3/share/services/skimconfiguredialog/skimplugin_scim_smartpinyin_config.desktop
+/lib/kde*/*.so
+/share/apps/skim/pics/smart-pinyin.png
+/share/config.kcfg/smartpinyin.kcfg
+/share/locale/*/LC_MESSAGES/skim-scim-pinyin.mo
+/share/services/skimconfiguredialog/skimplugin_scim_smartpinyin_config.desktop
 %endif
 

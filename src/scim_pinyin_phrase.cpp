@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2005 James Su <suzhe@tsinghua.org.cn>
  *
- * $Id: scim_pinyin_phrase.cpp,v 1.2 2005/08/06 12:06:49 suzhe Exp $
+ * $Id: scim_pinyin_phrase.cpp,v 1.3 2006/01/13 06:31:46 suzhe Exp $
  *
  */
 #define Uses_STL_FUNCTIONAL
@@ -25,6 +25,8 @@
 #define Uses_SCIM_CONFIG_BASE
 #define Uses_SCIM_CONFIG_PATH
 #define Uses_SCIM_LOOKUP_TABLE
+
+#include <cstring>
 
 #include <scim.h>
 #include "scim_pinyin_private.h"
@@ -118,20 +120,20 @@ PinyinPhraseLib::input_pinyin_lib (const PinyinValidator &validator, std::istrea
 
 	//check header
 	is.getline (header, 40);
-	if (strncmp (header,
+	if (std::strncmp (header,
 		scim_pinyin_lib_text_header,
-		strlen (scim_pinyin_lib_text_header)) == 0) {
+		std::strlen (scim_pinyin_lib_text_header)) == 0) {
 		binary = false;
-	} else if (strncmp (header,
+	} else if (std::strncmp (header,
 		scim_pinyin_lib_binary_header,
-		strlen (scim_pinyin_lib_binary_header)) == 0) {
+		std::strlen (scim_pinyin_lib_binary_header)) == 0) {
 		binary = true;
 	} else {
 		return false;
 	}
 	
 	is.getline (header, 40);
-	if (strncmp (header, scim_pinyin_lib_version, strlen (scim_pinyin_lib_version)) != 0)
+	if (std::strncmp (header, scim_pinyin_lib_version, std::strlen (scim_pinyin_lib_version)) != 0)
 		return false;
 
 	unsigned char bytes [4];
@@ -268,21 +270,21 @@ PinyinPhraseLib::input_indexes (std::istream &is)
 
 	//check index file
 	is.getline (header, 40);
-	if (strncmp (header,
+	if (std::strncmp (header,
 		scim_pinyin_phrase_idx_lib_text_header,
-		strlen (scim_pinyin_phrase_idx_lib_text_header)) == 0) {
+		std::strlen (scim_pinyin_phrase_idx_lib_text_header)) == 0) {
 		binary = false;
-	} else if (strncmp (header,
+	} else if (std::strncmp (header,
 		scim_pinyin_phrase_idx_lib_binary_header,
-		strlen (scim_pinyin_phrase_idx_lib_binary_header)) == 0) {
+		std::strlen (scim_pinyin_phrase_idx_lib_binary_header)) == 0) {
 		binary = true;
 	} else {
 		return false;
 	}
 
 	is.getline (header, 40);
-	if (strncmp (header, scim_pinyin_phrase_idx_lib_version,
-					strlen (scim_pinyin_phrase_idx_lib_version)) != 0)
+	if (std::strncmp (header, scim_pinyin_phrase_idx_lib_version,
+					std::strlen (scim_pinyin_phrase_idx_lib_version)) != 0)
 		return false;
 
 	unsigned char bytes [8];
@@ -897,24 +899,33 @@ PinyinPhraseLib::compact_memory ()
 void
 PinyinPhraseLib::dump_content (std::ostream &os, int minlen, int maxlen)
 {
-	PinyinPhrasePinyinLessThanByOffset less_op (this, m_pinyin_key_less);
-	if (minlen < 2) minlen = 2;
+	PinyinPhraseLessThanByOffset less_op (this, m_pinyin_key_less);
+	if (minlen < 1) minlen = 1;
 	if (maxlen > SCIM_PHRASE_MAX_LENGTH) maxlen = SCIM_PHRASE_MAX_LENGTH;
 
 	for (int i = minlen; i <= maxlen; ++ i) {
-		for (PinyinPhraseTable::iterator tit = m_phrases [i-1].begin ();
-				tit != m_phrases [i-1].end (); ++ tit) {
+		PinyinPhraseOffsetVector offsets;
+		for (PinyinPhraseTable::iterator tit = m_phrases [i-1].begin (); tit != m_phrases [i-1].end (); ++ tit) {
 			PinyinPhraseOffsetVector::iterator begin = tit->get_vector ().begin ();
 			PinyinPhraseOffsetVector::iterator end = tit->get_vector ().end ();
-			std::sort (begin, end, less_op);
-			for (PinyinPhraseOffsetVector::iterator oit = begin; oit != end; ++ oit) {
-				os << get_phrase (oit->first).frequency () << "\t";
-				os << utf8_wcstombs (get_phrase (oit->first).get_content ());
-				os << " =";
-				for (unsigned int j = 0; j < get_phrase (oit->first).length (); ++ j)
-					os << " " << get_pinyin_key (oit->second + j);
-				os << "\n";
-			}
+			offsets.insert (offsets.end (), begin, end);
+		}
+
+		std::sort (offsets.begin (), offsets.end (), less_op);
+
+		for (PinyinPhraseOffsetVector::iterator oit = offsets.begin (); oit != offsets.end (); ++ oit) {
+			bool before = false, after = false;
+
+			os << get_phrase (oit->first).frequency () << "\t";
+			if (oit > offsets.begin () && get_phrase ((oit-1)->first) == get_phrase (oit->first)) before = true;
+			if (oit < offsets.end () - 1 && get_phrase ((oit+1)->first) == get_phrase (oit->first)) after = true;
+			if (before || after) os << "+";
+			else os << "-";
+			os << utf8_wcstombs (get_phrase (oit->first).get_content ());
+			os << " =";
+			for (unsigned int j = 0; j < get_phrase (oit->first).length (); ++ j)
+				os << " " << get_pinyin_key (oit->second + j);
+			os << "\n";
 		}
 	}
 }
