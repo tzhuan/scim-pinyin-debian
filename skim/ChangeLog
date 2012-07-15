@@ -1,0 +1,422 @@
+2004-08-22	06:4	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	scim-chinese.spec.in (1.3) (+6 -4)
+
+	*** empty log message ***
+
+2004-08-22	06:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.10) (+14 -4)
+		src/Makefile.am (1.4) (+2 -2)
+
+	Fixed the install dir issue.
+
+2004-08-22	01:3	LiuCougar <liuspider@users.sourceforge.net>
+
+	Files:	configure.ac (1.9) (+8 -6)
+
+	fixed bug #1144
+
+2004-08-21	14:4	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.8) (+2 -2)
+		src/Makefile.am (1.3) (+2 -2)
+		src/scim_pinyin_imengine.cpp (1.8) (+6 -2)
+
+	Fixed some dir issue.
+
+2004-08-16	05:4	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.7) (+1 -1)
+		po/ja.po (1.1) ( )
+		po/ko.po (1.2) (+24 -31)
+		po/zh_CN.po (1.6) (+27 -28)
+		po/zh_TW.po (1.6) (+27 -28)
+		src/scim_pinyin_imengine_setup.cpp (1.4) (+8 -8)
+
+	Added ja.po.
+
+2004-08-15	23:5	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.6) (+1 -1)
+		po/ko.po (1.1) ( )
+		po/zh_CN.po (1.5) (+68 -68)
+		po/zh_TW.po (1.5) (+68 -68)
+
+	Added ko.po, thanks Kitae <neeum@yahoo.com>
+
+2004-08-13	02:3	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	ChangeLog (1.2) (+368 -5)
+
+	Update to 0.4.1
+
+2004-08-10	04:0	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.5) (+2 -2)
+		src/scim_pinyin_imengine_setup.cpp (1.3) (+1 -2)
+
+	*** empty log message ***
+
+2004-07-19	16:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	data/special_table (1.2) (+1 -1)
+
+	Updated the mail address.
+
+2004-07-18	14:3	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	po/zh_CN.po (1.4) (+104 -105)
+		po/zh_TW.po (1.4) (+104 -105)
+		src/scim_pinyin_imengine.cpp (1.7) (+2 -2)
+
+	Fixed the mode trigger issue.
+
+2004-07-02	14:5	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	src/scim_native_lookup_table.cpp (1.3) (+3 -1)
+
+	Do not use different attrs for user defined phrases.
+
+2004-07-01	07:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	src/scim_pinyin_imengine.cpp (1.6) (+3 -1)
+
+	Refresh all properties when reset.
+
+2004-06-20	23:1	LiuCougar <liuspider@users.sourceforge.net>
+
+	Files:	mkchlog (1.2) (+1 -1)
+
+	change liuspider's email
+
+2004-06-20	07:5	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	src/scim_pinyin_imengine.cpp (1.5) (+1 -23)
+
+	Don't save config.
+
+2004-06-20	07:5	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.4) (+3 -3)
+		mkchlog (1.1) ( )
+
+	Bump version to 0.4.0. Added mkchlog script.
+
+2004-06-19	10:3	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.3) (+0 -14)
+		src/scim_pinyin_imengine.cpp (1.4) (+1 -2)
+
+	Cleanup configure.ac
+
+2004-06-12	11:1	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	src/scim_pinyin_imengine.cpp (1.3) (+3 -17)
+		src/scim_pinyin_imengine_setup.cpp (1.2) (+1 -41)
+
+	Uses set_languages instead of set_locales.
+
+2004-06-11	23:5	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	po/POTFILES.in (1.2) (+2 -2)
+		po/zh_CN.po (1.3) (+113 -91)
+		po/zh_TW.po (1.3) (+113 -91)
+
+	Fixed po compilation.
+
+2004-06-11	15:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	src/scim_pinyin_imengine.cpp (1.2) (+36 -10)
+		src/scim_pinyin_imengine.h (1.2) (+7 -1)
+
+	Implemented config reload code.
+
+2004-06-11	07:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	configure.ac (1.2) (+1 -1)
+		scim-chinese.spec.in (1.2) (+2 -2)
+		po/zh_CN.po (1.2) (+1 -1)
+		po/zh_TW.po (1.2) (+1 -1)
+		schemas/scim-chinese.schemas.in (1.2) (+80 -80)
+		src/Makefile.am (1.2) (+8 -8)
+		src/scim_native_lookup_table.cpp (1.2) (+51 -44)
+		src/scim_native_lookup_table.h (1.2) (+137 -141)
+		src/scim_pinyin_imengine.cpp (1.1) ( )
+		src/scim_pinyin_imengine.h (1.1) ( )
+		src/scim_pinyin_imengine_setup.cpp (1.1) ( )
+
+	Updated to support newest SCIM code.
+
+2004-04-29	05:2	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	data/Makefile.am (1.1) ( )
+		data/phrase_lib (1.1) ( )
+		data/phrase_lib.txt (1.1) ( )
+		data/pinyin_phrase_index (1.1) ( )
+		data/pinyin_phrase_index.txt (1.1) ( )
+		data/pinyin_phrase_lib (1.1) ( )
+		data/pinyin_phrase_lib.txt (1.1) ( )
+		data/pinyin_table (1.1) ( )
+		data/pinyin_table.txt (1.1) ( )
+		data/smart-pinyin.png (1.1) ( )
+		data/special_table (1.1) ( )
+
+	Import data.
+
+2004-04-29	05:1	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	ABOUT-NLS (1.1) ( )
+		AUTHORS (1.1) ( )
+		COPYING (1.1) ( )
+		ChangeLog (1.1) ( )
+		INSTALL (1.1) ( )
+		Makefile.am (1.1) ( )
+		NEWS (1.1) ( )
+		README (1.1) ( )
+		TODO (1.1) ( )
+		bootstrap (1.1) ( )
+		config.rpath (1.1) ( )
+		configure.ac (1.1) ( )
+		mkinstalldirs (1.1) ( )
+		scim-chinese.spec.in (1.1) ( )
+		intl/ChangeLog (1.1) ( )
+		intl/Makefile.in (1.1) ( )
+		intl/VERSION (1.1) ( )
+		intl/bindtextdom.c (1.1) ( )
+		intl/config.charset (1.1) ( )
+		intl/dcgettext.c (1.1) ( )
+		intl/dcigettext.c (1.1) ( )
+		intl/dcngettext.c (1.1) ( )
+		intl/dgettext.c (1.1) ( )
+		intl/dngettext.c (1.1) ( )
+		intl/eval-plural.h (1.1) ( )
+		intl/explodename.c (1.1) ( )
+		intl/finddomain.c (1.1) ( )
+		intl/gettext.c (1.1) ( )
+		intl/gettextP.h (1.1) ( )
+		intl/gmo.h (1.1) ( )
+		intl/hash-string.h (1.1) ( )
+		intl/intl-compat.c (1.1) ( )
+		intl/l10nflist.c (1.1) ( )
+		intl/libgnuintl.h.in (1.1) ( )
+		intl/loadinfo.h (1.1) ( )
+		intl/loadmsgcat.c (1.1) ( )
+		intl/localcharset.c (1.1) ( )
+		intl/localcharset.h (1.1) ( )
+		intl/locale.alias (1.1) ( )
+		intl/localealias.c (1.1) ( )
+		intl/localename.c (1.1) ( )
+		intl/log.c (1.1) ( )
+		intl/ngettext.c (1.1) ( )
+		intl/os2compat.c (1.1) ( )
+		intl/os2compat.h (1.1) ( )
+		intl/osdep.c (1.1) ( )
+		intl/plural-exp.c (1.1) ( )
+		intl/plural-exp.h (1.1) ( )
+		intl/plural.c (1.1) ( )
+		intl/plural.y (1.1) ( )
+		intl/printf-args.c (1.1) ( )
+		intl/printf-args.h (1.1) ( )
+		intl/printf-parse.c (1.1) ( )
+		intl/printf-parse.h (1.1) ( )
+		intl/printf.c (1.1) ( )
+		intl/ref-add.sin (1.1) ( )
+		intl/ref-del.sin (1.1) ( )
+		intl/relocatable.c (1.1) ( )
+		intl/relocatable.h (1.1) ( )
+		intl/textdomain.c (1.1) ( )
+		intl/vasnprintf.c (1.1) ( )
+		intl/vasnprintf.h (1.1) ( )
+		intl/vasnwprintf.h (1.1) ( )
+		intl/wprintf-parse.h (1.1) ( )
+		intl/xsize.h (1.1) ( )
+		m4/ChangeLog (1.1) ( )
+		m4/Makefile.am (1.1) ( )
+		m4/codeset.m4 (1.1) ( )
+		m4/gettext.m4 (1.1) ( )
+		m4/glibc21.m4 (1.1) ( )
+		m4/iconv.m4 (1.1) ( )
+		m4/intdiv0.m4 (1.1) ( )
+		m4/intmax.m4 (1.1) ( )
+		m4/inttypes-pri.m4 (1.1) ( )
+		m4/inttypes.m4 (1.1) ( )
+		m4/inttypes_h.m4 (1.1) ( )
+		m4/isc-posix.m4 (1.1) ( )
+		m4/lcmessage.m4 (1.1) ( )
+		m4/lib-ld.m4 (1.1) ( )
+		m4/lib-link.m4 (1.1) ( )
+		m4/lib-prefix.m4 (1.1) ( )
+		m4/longdouble.m4 (1.1) ( )
+		m4/longlong.m4 (1.1) ( )
+		m4/nls.m4 (1.1) ( )
+		m4/po.m4 (1.1) ( )
+		m4/printf-posix.m4 (1.1) ( )
+		m4/progtest.m4 (1.1) ( )
+		m4/signed.m4 (1.1) ( )
+		m4/size_max.m4 (1.1) ( )
+		m4/stdint_h.m4 (1.1) ( )
+		m4/uintmax_t.m4 (1.1) ( )
+		m4/ulonglong.m4 (1.1) ( )
+		m4/wchar_t.m4 (1.1) ( )
+		m4/wint_t.m4 (1.1) ( )
+		m4/xsize.m4 (1.1) ( )
+		po/ChangeLog (1.1) ( )
+		po/Makefile.in.in (1.1) ( )
+		po/Makevars (1.1) ( )
+		po/POTFILES.in (1.1) ( )
+		po/Rules-quot (1.1) ( )
+		po/boldquot.sed (1.1) ( )
+		po/en@boldquot.header (1.1) ( )
+		po/en@quot.header (1.1) ( )
+		po/insert-header.sin (1.1) ( )
+		po/quot.sed (1.1) ( )
+		po/remove-potcdate.sin (1.1) ( )
+		po/zh_CN.po (1.1) ( )
+		po/zh_TW.po (1.1) ( )
+		schemas/Makefile.am (1.1) ( )
+		schemas/scim-chinese.schemas.in (1.1) ( )
+		src/Makefile.am (1.1) ( )
+		src/make_phrase.cpp (1.1) ( )
+		src/make_pinyin.cpp (1.1) ( )
+		src/make_pinyin_phrase.cpp (1.1) ( )
+		src/scim_native_lookup_table.cpp (1.1) ( )
+		src/scim_native_lookup_table.h (1.1) ( )
+		src/scim_phrase.cpp (1.1) ( )
+		src/scim_phrase.h (1.1) ( )
+		src/scim_pinyin.cpp (1.1) ( )
+		src/scim_pinyin.h (1.1) ( )
+		src/scim_pinyin_global.cpp (1.1) ( )
+		src/scim_pinyin_global.h (1.1) ( )
+		src/scim_pinyin_phrase.cpp (1.1) ( )
+		src/scim_pinyin_phrase.h (1.1) ( )
+		src/scim_pinyin_smart_match.cpp (1.1) ( )
+		src/scim_pinyin_smart_match.h (1.1) ( )
+		src/scim_special_table.cpp (1.1) ( )
+		src/scim_special_table.h (1.1) ( )
+
+	Initial revision
+
+2004-04-29	05:1	James Su <suzhe@tsinghua.org.cn>
+
+	Files:	ABOUT-NLS (1.1.1.1) (+0 -0)
+		AUTHORS (1.1.1.1) (+0 -0)
+		COPYING (1.1.1.1) (+0 -0)
+		INSTALL (1.1.1.1) (+0 -0)
+		Makefile.am (1.1.1.1) (+0 -0)
+		NEWS (1.1.1.1) (+0 -0)
+		README (1.1.1.1) (+0 -0)
+		TODO (1.1.1.1) (+0 -0)
+		bootstrap (1.1.1.1) (+0 -0)
+		config.rpath (1.1.1.1) (+0 -0)
+		mkinstalldirs (1.1.1.1) (+0 -0)
+		intl/ChangeLog (1.1.1.1) (+0 -0)
+		intl/Makefile.in (1.1.1.1) (+0 -0)
+		intl/VERSION (1.1.1.1) (+0 -0)
+		intl/bindtextdom.c (1.1.1.1) (+0 -0)
+		intl/config.charset (1.1.1.1) (+0 -0)
+		intl/dcgettext.c (1.1.1.1) (+0 -0)
+		intl/dcigettext.c (1.1.1.1) (+0 -0)
+		intl/dcngettext.c (1.1.1.1) (+0 -0)
+		intl/dgettext.c (1.1.1.1) (+0 -0)
+		intl/dngettext.c (1.1.1.1) (+0 -0)
+		intl/eval-plural.h (1.1.1.1) (+0 -0)
+		intl/explodename.c (1.1.1.1) (+0 -0)
+		intl/finddomain.c (1.1.1.1) (+0 -0)
+		intl/gettext.c (1.1.1.1) (+0 -0)
+		intl/gettextP.h (1.1.1.1) (+0 -0)
+		intl/gmo.h (1.1.1.1) (+0 -0)
+		intl/hash-string.h (1.1.1.1) (+0 -0)
+		intl/intl-compat.c (1.1.1.1) (+0 -0)
+		intl/l10nflist.c (1.1.1.1) (+0 -0)
+		intl/libgnuintl.h.in (1.1.1.1) (+0 -0)
+		intl/loadinfo.h (1.1.1.1) (+0 -0)
+		intl/loadmsgcat.c (1.1.1.1) (+0 -0)
+		intl/localcharset.c (1.1.1.1) (+0 -0)
+		intl/localcharset.h (1.1.1.1) (+0 -0)
+		intl/locale.alias (1.1.1.1) (+0 -0)
+		intl/localealias.c (1.1.1.1) (+0 -0)
+		intl/localename.c (1.1.1.1) (+0 -0)
+		intl/log.c (1.1.1.1) (+0 -0)
+		intl/ngettext.c (1.1.1.1) (+0 -0)
+		intl/os2compat.c (1.1.1.1) (+0 -0)
+		intl/os2compat.h (1.1.1.1) (+0 -0)
+		intl/osdep.c (1.1.1.1) (+0 -0)
+		intl/plural-exp.c (1.1.1.1) (+0 -0)
+		intl/plural-exp.h (1.1.1.1) (+0 -0)
+		intl/plural.c (1.1.1.1) (+0 -0)
+		intl/plural.y (1.1.1.1) (+0 -0)
+		intl/printf-args.c (1.1.1.1) (+0 -0)
+		intl/printf-args.h (1.1.1.1) (+0 -0)
+		intl/printf-parse.c (1.1.1.1) (+0 -0)
+		intl/printf-parse.h (1.1.1.1) (+0 -0)
+		intl/printf.c (1.1.1.1) (+0 -0)
+		intl/ref-add.sin (1.1.1.1) (+0 -0)
+		intl/ref-del.sin (1.1.1.1) (+0 -0)
+		intl/relocatable.c (1.1.1.1) (+0 -0)
+		intl/relocatable.h (1.1.1.1) (+0 -0)
+		intl/textdomain.c (1.1.1.1) (+0 -0)
+		intl/vasnprintf.c (1.1.1.1) (+0 -0)
+		intl/vasnprintf.h (1.1.1.1) (+0 -0)
+		intl/vasnwprintf.h (1.1.1.1) (+0 -0)
+		intl/wprintf-parse.h (1.1.1.1) (+0 -0)
+		intl/xsize.h (1.1.1.1) (+0 -0)
+		m4/ChangeLog (1.1.1.1) (+0 -0)
+		m4/Makefile.am (1.1.1.1) (+0 -0)
+		m4/codeset.m4 (1.1.1.1) (+0 -0)
+		m4/gettext.m4 (1.1.1.1) (+0 -0)
+		m4/glibc21.m4 (1.1.1.1) (+0 -0)
+		m4/iconv.m4 (1.1.1.1) (+0 -0)
+		m4/intdiv0.m4 (1.1.1.1) (+0 -0)
+		m4/intmax.m4 (1.1.1.1) (+0 -0)
+		m4/inttypes-pri.m4 (1.1.1.1) (+0 -0)
+		m4/inttypes.m4 (1.1.1.1) (+0 -0)
+		m4/inttypes_h.m4 (1.1.1.1) (+0 -0)
+		m4/isc-posix.m4 (1.1.1.1) (+0 -0)
+		m4/lcmessage.m4 (1.1.1.1) (+0 -0)
+		m4/lib-ld.m4 (1.1.1.1) (+0 -0)
+		m4/lib-link.m4 (1.1.1.1) (+0 -0)
+		m4/lib-prefix.m4 (1.1.1.1) (+0 -0)
+		m4/longdouble.m4 (1.1.1.1) (+0 -0)
+		m4/longlong.m4 (1.1.1.1) (+0 -0)
+		m4/nls.m4 (1.1.1.1) (+0 -0)
+		m4/po.m4 (1.1.1.1) (+0 -0)
+		m4/printf-posix.m4 (1.1.1.1) (+0 -0)
+		m4/progtest.m4 (1.1.1.1) (+0 -0)
+		m4/signed.m4 (1.1.1.1) (+0 -0)
+		m4/size_max.m4 (1.1.1.1) (+0 -0)
+		m4/stdint_h.m4 (1.1.1.1) (+0 -0)
+		m4/uintmax_t.m4 (1.1.1.1) (+0 -0)
+		m4/ulonglong.m4 (1.1.1.1) (+0 -0)
+		m4/wchar_t.m4 (1.1.1.1) (+0 -0)
+		m4/wint_t.m4 (1.1.1.1) (+0 -0)
+		m4/xsize.m4 (1.1.1.1) (+0 -0)
+		po/ChangeLog (1.1.1.1) (+0 -0)
+		po/Makefile.in.in (1.1.1.1) (+0 -0)
+		po/Makevars (1.1.1.1) (+0 -0)
+		po/Rules-quot (1.1.1.1) (+0 -0)
+		po/boldquot.sed (1.1.1.1) (+0 -0)
+		po/en@boldquot.header (1.1.1.1) (+0 -0)
+		po/en@quot.header (1.1.1.1) (+0 -0)
+		po/insert-header.sin (1.1.1.1) (+0 -0)
+		po/quot.sed (1.1.1.1) (+0 -0)
+		po/remove-potcdate.sin (1.1.1.1) (+0 -0)
+		schemas/Makefile.am (1.1.1.1) (+0 -0)
+		src/make_phrase.cpp (1.1.1.1) (+0 -0)
+		src/make_pinyin.cpp (1.1.1.1) (+0 -0)
+		src/make_pinyin_phrase.cpp (1.1.1.1) (+0 -0)
+		src/scim_phrase.cpp (1.1.1.1) (+0 -0)
+		src/scim_phrase.h (1.1.1.1) (+0 -0)
+		src/scim_pinyin.cpp (1.1.1.1) (+0 -0)
+		src/scim_pinyin.h (1.1.1.1) (+0 -0)
+		src/scim_pinyin_global.cpp (1.1.1.1) (+0 -0)
+		src/scim_pinyin_global.h (1.1.1.1) (+0 -0)
+		src/scim_pinyin_phrase.cpp (1.1.1.1) (+0 -0)
+		src/scim_pinyin_phrase.h (1.1.1.1) (+0 -0)
+		src/scim_pinyin_smart_match.cpp (1.1.1.1) (+0 -0)
+		src/scim_pinyin_smart_match.h (1.1.1.1) (+0 -0)
+		src/scim_special_table.cpp (1.1.1.1) (+0 -0)
+		src/scim_special_table.h (1.1.1.1) (+0 -0)
+
+	Initial import of GPL version.
+
