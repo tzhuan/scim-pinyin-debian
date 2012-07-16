@@ -1,6 +1,0 @@
-usr/lib/scim-1.0/*/IMEngine/pinyin.so
-usr/lib/scim-1.0/*/SetupUI/pinyin-imengine-setup.so
-
-usr/share/scim/pinyin/*
-usr/share/locale/*/LC_MESSAGES/scim-pinyin.mo
-usr/share/scim/icons/smart-pinyin.png
